@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TimeMapperTests (1)" project="ex00" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.codehows.persistence.TimeMapperTests" time="0.187">
+    <testcase name="testGetTime2" classname="com.codehows.persistence.TimeMapperTests" time="0.184"/>
+    <testcase name="testGetTime" classname="com.codehows.persistence.TimeMapperTests" time="0.002"/>
+  </testsuite>
+</testrun>

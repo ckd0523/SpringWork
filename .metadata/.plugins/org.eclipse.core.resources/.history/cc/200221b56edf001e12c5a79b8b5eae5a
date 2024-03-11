@@ -1,0 +1,5 @@
+package com.codehows.persistence;
+
+public class JDBCTests {
+
+}
