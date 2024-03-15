@@ -49,7 +49,7 @@ public class BoardControllerTests {
 		
 		
 	}
-	*/
+	
 	@Test
 	public void testRegister()throws Exception{
 		
@@ -64,40 +64,52 @@ public class BoardControllerTests {
 		
 	}
 	
-	/*
 	@Test
-	   public void testGet() throws Exception{
-	      log.info(mockMvc.perform(MockMvcRequestBuilders
-	            .get("/board/get")
-	            .param("bno", "4"))
-	            .andReturn().getModelAndView().getModelMap());
-	      
-	   }
-	   
-	   
+	public void testGet() throws Exception{
+		log.info(mockMvc.perform(MockMvcRequestBuilders
+				.get("/board/get")
+				.param("bno", "13"))
+				.andReturn().getModelAndView().getModelMap());
+		
+	}
+	
 	
 	@Test
-	   public void testModify() throws Exception{
-	      
-		String resultPage = mockMvc
-			.perform(MockMvcRequestBuilders.post("/board/modify")
-					.param("bno", "1")
-					.param("title", "수정된 테스트 새글 제목")
-					.param("content", "수정된 테스트 새글 내용")
-					.param("writer", "user00"))
+	public void testModify() throws Exception{
+		
+		String resultPage =mockMvc
+				.perform(MockMvcRequestBuilders.post("/board/modify")
+						.param("bno", "1")
+						.param("title", "수정된 테스트 새글 제목")
+						.param("content","수정된 테스트 새글 내용")
+						.param("writer","user00"))
 					.andReturn().getModelAndView().getViewName();
 			log.info(resultPage);
-	   }
-	
+	}
 	
 	@Test
-	   public void testRemove() throws Exception{
-	      
-		String resultPage = mockMvc
-			.perform(MockMvcRequestBuilders.post("/board/remove")
-					.param("bno", "1"))
-					.andReturn().getModelAndView().getViewName();
-			log.info(resultPage);
-	   }
+	public void testRemove()throws Exception{
+		
+		String resultPage =mockMvc.perform(MockMvcRequestBuilders.post("/board/remove")
+				.param("bno", "12")
+				).andReturn().getModelAndView().getViewName();
+		
+		log.info(resultPage);
+			
+	
+	}
 	*/
+	
+	
+	@Test
+	public void testListPaging()throws Exception{
+		
+		log.info(
+				mockMvc.perform(MockMvcRequestBuilders.get("/board/list")
+				.param("pageNum","2")
+				.param("amount","50"))
+				.andReturn().getModelAndView().getModelMap());
+			
+	
+	}
 }
