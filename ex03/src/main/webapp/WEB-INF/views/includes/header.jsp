@@ -376,4 +376,4 @@
             <!-- /.navbar-static-side -->
         </nav>
         
-        <script src="https://ajax.googleapis.com/ajax/jquery/3.3.1/jquery.min.js"></script>
+     <!-- <script src="https://ajax.googleapis.com/ajax/jquery/3.3.1/jquery.min.js"></script>  -->   
