@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Ser"/>
+		<item key="selection" value="log4j"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="log4j"/>
+			<item value="properties"/>
+			<item value="Aspect"/>
+			<item value="weaver"/>
+			<item value="getList"/>
+			<item value="replt"/>
+			<item value="starNum"/>
+			<item value="showList"/>
+			<item value="modalInputReplyDate"/>
+			<item value="jquery"/>
 			<item value="ser"/>
 			<item value="lom"/>
 			<item value="json"/>
-			<item value="log4j"/>
 			<item value="junit"/>
 			<item value="pull-right"/>
-			<item value="getTotal"/>
-			<item value="board.title"/>
-			<item value="actionForm"/>
-			<item value="insert"/>
-			<item value="board"/>
-			<item value="table"/>
-			<item value="page-wrapper"/>
-			<item value="../"/>
-			<item value="dis"/>
 		</list>
 		<list key="replacehistory">
 			<item value="/resources/"/>
