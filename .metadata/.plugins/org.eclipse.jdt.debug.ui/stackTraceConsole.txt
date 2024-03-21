@@ -1,26 +1,26 @@
-org.springframework.jdbc.BadSqlGrammarException: 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: ORA-00911: invalid character
+org.springframework.jdbc.UncategorizedSQLException: 
+### Error updating database.  Cause: java.sql.SQLException: ORA-12899: value too large for column "BOOK_EX"."TABLE_SAMPLE2"."COL2" (actual: 82, maximum: 50)
 
-### The error may exist in com/codehows/mapper/ReplyMapper.xml
-### The error may involve defaultParameterMap
+### The error may involve com.codehows.mapper.Sample2Mapper.insertCol2-Inline
 ### The error occurred while setting parameters
-### SQL: select rno, bno, reply, replyer, replydate, updatedate    from         (      select /*+ INDEX(tbl_reply idx_reply) */       rownum rn, rno, bno, reply, replyer, replyDate, updatedate from tbl_reply       where bno = ?          and rno > 0          and rownum <= ?*?      )      where rn > (?-1)*?;
-### Cause: java.sql.SQLSyntaxErrorException: ORA-00911: invalid character
+### SQL: insert into table_sample2 (col2) values (?)
+### Cause: java.sql.SQLException: ORA-12899: value too large for column "BOOK_EX"."TABLE_SAMPLE2"."COL2" (actual: 82, maximum: 50)
 
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: ORA-00911: invalid character
+; uncategorized SQLException; SQL state [72000]; error code [12899]; ORA-12899: value too large for column "BOOK_EX"."TABLE_SAMPLE2"."COL2" (actual: 82, maximum: 50)
+; nested exception is java.sql.SQLException: ORA-12899: value too large for column "BOOK_EX"."TABLE_SAMPLE2"."COL2" (actual: 82, maximum: 50)
 
-	at org.springframework.jdbc.support.SQLExceptionSubclassTranslator.doTranslate(SQLExceptionSubclassTranslator.java:93)
-	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:89)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
 	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
 	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:446)
-	at com.sun.proxy.$Proxy25.selectList(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:230)
-	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:139)
-	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:76)
+	at com.sun.proxy.$Proxy31.insert(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.insert(SqlSessionTemplate.java:278)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:58)
 	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
-	at com.sun.proxy.$Proxy28.getListWithPaging(Unknown Source)
-	at com.codehows.mapper.ReplyMapperTests.testList2(ReplyMapperTests.java:112)
+	at com.sun.proxy.$Proxy33.insertCol2(Unknown Source)
+	at com.codehows.service.SampleTxServiceImpl.addData(SampleTxServiceImpl.java:30)
+	at com.codehows.service.SampleTxServiceTests.testLong(SampleTxServiceTests.java:32)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -52,7 +52,7 @@ org.springframework.jdbc.BadSqlGrammarException:
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
-Caused by: java.sql.SQLSyntaxErrorException: ORA-00911: invalid character
+Caused by: java.sql.SQLException: ORA-12899: value too large for column "BOOK_EX"."TABLE_SAMPLE2"."COL2" (actual: 82, maximum: 50)
 
 	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:509)
 	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:461)
@@ -62,9 +62,8 @@ Caused by: java.sql.SQLSyntaxErrorException: ORA-00911: invalid character
 	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:655)
 	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:270)
 	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:91)
-	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:807)
-	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:983)
-	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1168)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:970)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1205)
 	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3666)
 	at oracle.jdbc.driver.T4CPreparedStatement.executeInternal(T4CPreparedStatement.java:1426)
 	at oracle.jdbc.driver.OraclePreparedStatement.execute(OraclePreparedStatement.java:3778)
@@ -72,41 +71,21 @@ Caused by: java.sql.SQLSyntaxErrorException: ORA-00911: invalid character
 	at net.sf.log4jdbc.sql.jdbcapi.PreparedStatementSpy.execute(PreparedStatementSpy.java:443)
 	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
 	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:326)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:46)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:198)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:185)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
 	... 38 more
-Caused by: Error : 911, Position : 307, Sql = select rno, bno, reply, replyer, replydate, updatedate 
-	 from   
-   		(
-   		select /*+ INDEX(tbl_reply idx_reply) */ 
-    	rownum rn, rno, bno, reply, replyer, replyDate, updatedate from tbl_reply 
-    	where bno = :1  
-        and rno > 0 
-        and rownum <= :2 *:3 
-    	) 
-    where rn > (:4 -1)*:5 ;, OriginalSql = select rno, bno, reply, replyer, replydate, updatedate 
-	 from   
-   		(
-   		select /*+ INDEX(tbl_reply idx_reply) */ 
-    	rownum rn, rno, bno, reply, replyer, replyDate, updatedate from tbl_reply 
-    	where bno = ? 
-        and rno > 0 
-        and rownum <= ?*?
-    	) 
-    where rn > (?-1)*?;, Error Msg = ORA-00911: invalid character
+Caused by: Error : 12899, Position : 42, Sql = insert into table_sample2 (col2) values (:1 ), OriginalSql = insert into table_sample2 (col2) values (?), Error Msg = ORA-12899: value too large for column "BOOK_EX"."TABLE_SAMPLE2"."COL2" (actual: 82, maximum: 50)
 
 	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:513)
-	... 69 more
+	... 66 more
 
