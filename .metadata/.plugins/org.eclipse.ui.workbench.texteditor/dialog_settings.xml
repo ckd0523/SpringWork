@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="log4j"/>
+		<item key="selection" value="showUploaded"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="log4j"/>
-			<item value="properties"/>
-			<item value="Aspect"/>
-			<item value="weaver"/>
-			<item value="getList"/>
-			<item value="replt"/>
-			<item value="starNum"/>
-			<item value="showList"/>
-			<item value="modalInputReplyDate"/>
-			<item value="jquery"/>
-			<item value="ser"/>
-			<item value="lom"/>
-			<item value="json"/>
-			<item value="junit"/>
-			<item value="pull-right"/>
+			<item value="showUploaded"/>
+			<item value="showUpload"/>
+			<item value="showImage"/>
+			<item value="jackson-databind"/>
+			<item value="forEach"/>
+			<item value="updateReply"/>
+			<item value="update"/>
+			<item value="servlet"/>
+			<item value="jdbc4"/>
+			<item value="mybati"/>
+			<item value="Hika"/>
+			<item value="Hica"/>
+			<item value="hica"/>
+			<item value="tx"/>
+			<item value="jdbc"/>
 		</list>
 		<list key="replacehistory">
 			<item value="/resources/"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1472"/>
-		<item key="DIALOG_Y_ORIGIN" value="915"/>
+		<item key="DIALOG_X_ORIGIN" value="1628"/>
+		<item key="DIALOG_Y_ORIGIN" value="921"/>
 		<item key="DIALOG_WIDTH" value="393"/>
 		<item key="DIALOG_HEIGHT" value="523"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
