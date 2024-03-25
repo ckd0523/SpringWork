@@ -38,9 +38,21 @@
 		<!-- /.modal-dialog -->
 	</div>
 <!-- /.modal -->
-<script type="text/javascript" src="/resources/js/reply.js"></script>   
+<script type="text/javascript" src="/resources/js/reply.js"></script>
+<script>
+$(document).ready(function(){
+	
+	(function(){
+		var bno = '<c:out value="${board.bno}"/>';
+		$.getJSON("/board/getAttachList", {bno:bno}, function(arr){
+			console.log(arr);
+		}); //end.getjson
+	})();//end function
+})
+</script>   
 <script type="text/javascript">
 	$(document).ready(function(){
+		
 		var bnoValue = '<c:out value="${board.bno}"/>';
 		var replyUL = $(".chat");
 			showList(1);
