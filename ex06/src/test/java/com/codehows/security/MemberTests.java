@@ -12,6 +12,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.codehows.domain.MemberVO;
+import com.codehows.mapper.MemberMapper;
+
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
@@ -28,6 +31,9 @@ public class MemberTests {
 	
 	@Setter(onMethod_ = @Autowired)
 	private DataSource ds;
+	
+	@Setter(onMethod_ = @Autowired)
+	private MemberMapper mapper;
 	
 	/*
 	@Test
@@ -71,7 +77,7 @@ public class MemberTests {
 		}//end for
 		
 	}
-	*/
+	
 	
 	@Test
 	public void testInsertAuth() {
@@ -112,5 +118,14 @@ public class MemberTests {
 		}//end for
 		
 	}
+	*/
 	
+	@Test
+	public void testRead() {
+		MemberVO vo = mapper.read("admin90");
+		
+		log.info(vo);
+		
+		vo.getAuthList().forEach(authVO -> log.info(authVO));
+	}
 }

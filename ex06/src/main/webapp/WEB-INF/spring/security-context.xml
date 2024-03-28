@@ -11,6 +11,7 @@
    <bean id="customLoginSuccess" class="com.codehows.security.CustomLoginSuccessHandler"></bean>
    <!-- <bean id="customPasswordEncoder" class="com.codehows.security.CustomPasswordEncoder"></bean> -->
    <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+   <bean id="customUserDetailsService" class="com.codehows.security.CustomUserDetailsService"></bean>
    
    <security:http><!--  auto-config="true" use-expressions="true" -->
 
@@ -20,26 +21,45 @@
       
       <security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')"/>
       
+      <!-- <security:access-denied-handler error-page="/accessError" /> -->
+      <security:access-denied-handler ref="customAccessDenied" />
+      
       <!-- <security:form-login/> -->
       <security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/>
       
       <security:logout logout-url="/customLogout" invalidate-session="true"/>
       
-   <!-- <security:access-denied-handler error-page="/accessError" /> -->
-   <security:access-denied-handler ref="customAccessDenied" />
+      <security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
+      
+   	  
 
    </security:http>
    
-   <security:authentication-manager>
+	<!-- 
+	<security:authentication-manager>
    
       <security:authentication-provider>
       
-      	<security:jdbc-user-service data-source-ref="dataSource" />
+      	//<security:jdbc-user-service data-source-ref="dataSource" />
+      	//<security:password-encoder ref="customPasswordEncoder" />
+      	<security:jdbc-user-service data-source-ref="dataSource"
+      		users-by-username-query="select userid, userpw, enabled from tbl_member where userid=? "
+      		authorities-by-username-query="select userid, auth from tbl_member_auth where userid=? " />
       	<security:password-encoder ref="bcryptPasswordEncoder" />
-      	<!-- <security:password-encoder ref="customPasswordEncoder" /> -->
-      
+      	
       </security:authentication-provider>
  
+   </security:authentication-manager>
+    -->
+    
+   <security:authentication-manager>
+   
+      <security:authentication-provider user-service-ref="customUserDetailsService">
+      
+      	<security:password-encoder ref="bcryptPasswordEncoder" />
+      
+      </security:authentication-provider>
+   
    </security:authentication-manager>
 
 
